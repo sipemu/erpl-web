@@ -46,6 +46,11 @@ duckdb::optional_ptr<duckdb::CatalogEntry> ODataSchemaEntry::GetEntry(duckdb::Ca
 	}
 }
 
+duckdb::optional_ptr<duckdb::CatalogEntry> ODataSchemaEntry::LookupEntry(duckdb::CatalogTransaction transaction, const duckdb::EntryLookupInfo &lookup_info)
+{
+    return GetEntry(transaction, lookup_info.GetCatalogType(), lookup_info.GetEntryName());
+}
+
 #pragma region NotRelevantImplementations
 
 duckdb::optional_ptr<duckdb::CatalogEntry> ODataSchemaEntry::CreateTable(duckdb::CatalogTransaction transaction, duckdb::BoundCreateTableInfo &info)
